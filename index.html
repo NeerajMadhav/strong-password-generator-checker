@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strong Password Generator</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .password-container {
+			padding-left:45px;
+			padding-right:45px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .password {
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+            word-break: break-all;
+        }
+        
+        .btn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button {
+			margin-left:25px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Strong Password Generator</h1>
+        <div class="password-container">
+            <div class="password">{{ password }}
+				<button onclick="copyToClipboard('{{ password }}')">Copy</button>
+			</div>
+			<p>Password Strength: {{ strength }}</p>
+        </div>
+        <button class="btn" onclick="location.reload()">Generate New Password</button>
+    </div>
+    <script>
+        function copyToClipboard(text) {
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
